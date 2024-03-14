@@ -85,7 +85,7 @@ function(compile_shaders targetName glslDirectory spvDirectory)
         get_filename_component(glslShaderFileName ${glslShader} NAME)
         get_filename_component(spvShaderDirectory ${spvShaderFile} DIRECTORY)
         execute_process(COMMAND ${glslangValidator}
-            --target-env vulkan1.2 -V "${glslDirectory}/${glslShader}" -o ${spvShaderFile})
+            --target-env vulkan1.2 -gVS -V "${glslDirectory}/${glslShader}" -o ${spvShaderFile})
         message(STATUS "Compiled GLSL shader ${glslShaderFileName} to SPIR-V shader ${spvShaderFile}")
     endforeach(glslShader)
 endfunction()
